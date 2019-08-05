@@ -1,8 +1,23 @@
 import Vue from 'vue'
+import VueRouter from 'vue-router'
+import VueI18n from 'vue-i18n'
+
 import App from './App.vue'
 
-Vue.config.productionTip = false
+import routes from './routes';
+import i18n from './i18n';
+import store from './store/store';
+
+Vue.config.productionTip = false;
+
+Vue.use(VueRouter);
+Vue.use(VueI18n);
+
+const router = new VueRouter({mode: 'history', routes});
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router,
+  i18n,
+  store,
+  render: h => h(App)
+}).$mount('#app');
